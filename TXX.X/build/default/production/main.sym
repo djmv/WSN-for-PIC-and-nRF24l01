@@ -30,15 +30,15 @@
 038     RF_DIR
 039     @TRIS_C
 03A     MAIN.ret2
-03B     RF_SEND.i
 03B     RF_CONFIG.canal
+03B     RF_SEND.i
 03B     @PRINTF_D_9600_62_63.P1
 03B     MAIN.@SCRATCH1
 03B     @PSTRINGC7_9600_62_63.@SCRATCH1
 03C     RF_SEND.estado
-03C     RF_CONFIG.dir
 03C     @PRINTF_D_9600_62_63.P1
-03C     @delay_ms1.P2
+03C     RF_CONFIG.dir
+03C     @delay_ms1.P1
 03C     @PSTRINGC7_9600_62_63.@SCRATCH2
 03D     RF_SEND.@SCRATCH1
 03D     @PSTRINGC7_9600_62_63.@SCRATCH3
@@ -69,8 +69,8 @@
 09C.6   C1OUT
 09C.7   C2OUT
 0FF     @INTERRUPT_AREA
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 17F     @INTERRUPT_AREA
 1FF     @INTERRUPT_AREA
 27F     @INTERRUPT_AREA
@@ -124,11 +124,11 @@ Project Directory:
     E:\script sensores\TXX.X\
 
 Project Files:
-    main.c                                                  [19-mar-17 18:39  CRC=BE46E7E5]
+    main.c                                                  [19-mar-17 19:54  CRC=90ACAE6A]
     16F877A.h                                               [12-nov-13 14:35  CRC=81334808]
     lib_rf2gh4_10.h                                         [16-nov-12 15:43  CRC=1518DDEA]
 
-Source signature=69ABEBC1
+Source signature=3C11B246
 
 Units:
     main (main)
@@ -136,7 +136,7 @@ Units:
 Compiler Settings:
     Processor:      PIC16F877A
     Pointer Size:   16
-    ADC Range:      0-255
+    ADC Range:      0-1023
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32

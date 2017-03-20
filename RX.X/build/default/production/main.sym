@@ -1,10 +1,10 @@
-004-005 @READ_PROGRAM_MEMORY8.P1
-004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
 005     porta
 008     PSP_DATA
 00B     INTCON
-015     CCP_1_LOW
 015     CCP_1
+015     CCP_1_LOW
 016     CCP_1_HIGH
 01B     CCP_2
 01B     CCP_2_LOW
@@ -31,14 +31,16 @@
 03A     @TRIS_C
 03B     RF_CONFIG.canal
 03B     MAIN.@SCRATCH1
-03C     @delay_ms1.P1
 03C     RF_CONFIG.dir
+03C     @delay_ms1.P1
 03F     int_RB0.ret1
 040     @PRINTF_D_9600_62_63.P1
+040     @PRINTF_U_9600_62_63.P2
 040     RF_RECEIVE.i
 040     @PSTRINGC7_9600_62_63.@SCRATCH1
-041     RF_RECEIVE.mas
 041     @PRINTF_D_9600_62_63.P1
+041     RF_RECEIVE.mas
+041     @PRINTF_U_9600_62_63.P1
 041     @PSTRINGC7_9600_62_63.@SCRATCH2
 042     RF_RECEIVE.estado
 042     @PSTRINGC7_9600_62_63.@SCRATCH3
@@ -103,27 +105,28 @@ ROM Allocation:
 000137  @DIV88
 00014C  @PRINTF_D_9600_62_63
 0001A7  int_RB0
-000216  @const653.call
-000219  @const666.call
-00021C  @const671.call
-000224  @delay_ms1
-000239  RF_INT_EN
-000247  RF_CONFIG_SPI
-000265  RF_CONFIG
-000458  RF_ON
-00048B  @cinit1
-00048B  MAIN
-0004A2  @cinit2
+000202  @PRINTF_U_9600_62_63
+000259  @const653.call
+00025C  @const670.call
+00025F  @const675.call
+000267  @delay_ms1
+00027C  RF_INT_EN
+00028A  RF_CONFIG_SPI
+0002A8  RF_CONFIG
+00049B  RF_ON
+0004CE  MAIN
+0004CE  @cinit1
+0004E5  @cinit2
 
 Project Directory:
     E:\script sensores\RX.X\
 
 Project Files:
-    main.c                                                  [19-mar-17 18:39  CRC=29402976]
+    main.c                                                  [19-mar-17 20:00  CRC=7602F9F6]
     16F877A.h                                               [12-nov-13 14:35  CRC=81334808]
     lib_rf2gh4_10.h                                         [16-nov-12 15:43  CRC=1518DDEA]
 
-Source signature=D4A52D52
+Source signature=2167FDD2
 
 Units:
     main (main)

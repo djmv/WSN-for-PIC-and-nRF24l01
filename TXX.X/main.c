@@ -7,6 +7,7 @@
 
 #include <16F877A.h>
 #FUSES NOWDT, XT, PUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP, NOCPD, NOWRT
+#device adc=10
 #use delay(crystal=16MHz)
 #include "lib_rf2gh4_10.h"
 #byte porta=0x05
@@ -31,6 +32,10 @@ void int_RB0()
 
 void main()
 {  
+    //*
+    setup_adc_ports(an0);//Selecciona el puerto a realizar la conversion
+    setup_adc(adc_clock_internal);//Selecciona el reloj de conversion
+    set_adc_channel(0);//Selecciona el canal de conversion
    int8 ret2;
    output_low(LED);
       delay_ms(1000);
@@ -44,21 +49,19 @@ void main()
    RF_CONFIG_SPI();          // Configurar módulo SPI del PIC.
    RF_CONFIG(0x40,0x01);     // Configurar módulo RF canal y dirección.
    RF_ON();                  // Activar el módulo RF.
-   
-   delay_ms(5);
    printf("configurado! \n");
    set_tris_a(0b111111);     // Todo el puerto A como entradas.
-   while(true)
-   {  
-      RF_DATA[0]=0x61;
-      RF_DATA[3]=0x61;
-      RF_DATA[1]=0x62;
-      RF_DATA[2]=0x63;
-      RF_DIR=0x08;           // Dirección del receptor.
-      ret2=RF_SEND();        // Enviar datos.
-      delay_ms(1000);
-      printf("Enviado! \n");
-      printf("%d",ret2);
-     
-   }
+        while(true)
+        {  
+           RF_DATA[0]=0x61;
+           RF_DATA[3]=read_adc();
+           RF_DATA[1]=0x62;
+           RF_DATA[2]=0x63;
+           RF_DIR=0x08;           // Dirección del receptor.
+           ret2=RF_SEND();        // Enviar datos.
+           delay_ms(1000);
+           printf("Enviado! \n");
+           printf("%d",ret2);
+
+        }
 }

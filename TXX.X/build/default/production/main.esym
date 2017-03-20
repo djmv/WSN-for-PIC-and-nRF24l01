@@ -1,7 +1,7 @@
 D G "__PCM__" 0 0 ""5.015""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""19-mar-17""
-D G "__TIME__" 0 0 ""18:39:14""
+D G "__TIME__" 0 0 ""19:54:45""
 D G "__16F877A" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -924,18 +924,21 @@ C L "RF_RECEIVE" 2 538 2 "FUNCTION"
 C L "RF_RECEIVE" 2 538 2 "FUNCTION"
 C L "RF_RECEIVE" 2 538 2 "FUNCTION"
 C L "RF_RECEIVE" 2 538 3 "FUNCTION"
-D G "LED" 0 16 "PIN_B2"
-F G "int_RB0" 0 19 "void()" `652 
-V L "ret1" 0 20 "int8" `653 
-F G "MAIN" 0 33 "void()" `654 
-V L "ret2" 0 34 "int8" `655 
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
-C L "MAIN" 0 43 1 "FUNCTION"
+D G "LED" 0 17 "PIN_B2"
+F G "int_RB0" 0 20 "void()" `652 
+V L "ret1" 0 21 "int8" `653 
+F G "MAIN" 0 34 "void()" `654  ""
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+V L "ret2" 0 39 "int8" `657 
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
+C L "MAIN" 0 36 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

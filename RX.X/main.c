@@ -20,7 +20,8 @@ void int_RB0()
          printf("\n %c",porta);                  // El puerto A contendrá el valor que le llegue del emisor, a través de RF_DATA[0].
          printf("\n %c",RF_DATA[1]);
          printf("\n %c",RF_DATA[2]);
-         printf("\n %c",RF_DATA[3]);
+         printf("\n %d",RF_DATA[3]);
+         printf("\n %u",RF_DATA[3]);
          printf("\n 2do");
          ret1 = RF_RECEIVE();                // "ret1" nos dirá si hay recepción simple, múltiple o no hay datos para leer.
          printf("\n %d",ret1);

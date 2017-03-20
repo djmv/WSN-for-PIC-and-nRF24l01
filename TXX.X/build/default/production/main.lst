@@ -1,10 +1,10 @@
-CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
+CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 19:54
 
                Filename:   E:\script sensores\TXX.X\build\default\production\main.lst
 
-               ROM used:   1730 words (21%)
+               ROM used:   1752 words (21%)
                            Largest free fragment is 2048
-               RAM used:   33 (9%) at main() level
+               RAM used:   32 (9%) at main() level
                            47 (13%) worst case
                Stack used: 4 locations (2 in main + 2 for interrupts)
                Stack size: 8
@@ -326,11 +326,12 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 0635:  MOVWF  19
 0636:  BCF    0A.3
 0637:  BCF    0A.4
-0638:  GOTO   6BF (RETURN)
+0638:  GOTO   6D5 (RETURN)
 ....................  
 .................... #list 
 ....................  
 .................... #FUSES NOWDT, XT, PUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP, NOCPD, NOWRT 
+.................... #device adc=10 
 .................... #use delay(crystal=16MHz) 
 *
 0102:  MOVLW  3C
@@ -490,7 +491,7 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 013F:  BCF    03.5
 0140:  BCF    0A.3
 0141:  BCF    0A.4
-0142:  GOTO   68C (RETURN)
+0142:  GOTO   69F (RETURN)
 .................... } 
 .................... //***************************************************** 
 ....................  
@@ -531,7 +532,7 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 0121:  IORWF  0B,F
 0122:  BCF    0A.3
 0123:  BCF    0A.4
-0124:  GOTO   68B (RETURN)
+0124:  GOTO   69E (RETURN)
 .................... } 
 .................... //***************************************************** 
 ....................  
@@ -1179,7 +1180,7 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 0332:  BSF    07.1
 0333:  BCF    0A.3
 0334:  BCF    0A.4
-0335:  GOTO   691 (RETURN)
+0335:  GOTO   6A4 (RETURN)
 .................... } 
 .................... //***************************************************** 
 ....................  
@@ -1266,7 +1267,7 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 0365:  GOTO   366
 0366:  BCF    0A.3
 0367:  BCF    0A.4
-0368:  GOTO   692 (RETURN)
+0368:  GOTO   6A5 (RETURN)
 .................... } 
 .................... //***************************************************** 
 ....................  
@@ -1997,7 +1998,7 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 ....................       } 
 05C4:  BCF    0A.3
 05C5:  BCF    0A.4
-05C6:  GOTO   6AA (RETURN)
+05C6:  GOTO   6C0 (RETURN)
 .................... } 
 .................... //***************************************************** 
 ....................  
@@ -2299,138 +2300,162 @@ CCS PCM C Compiler, Version 5.015, 5967               19-mar-17 18:39
 064F:  MOVWF  1C
 0650:  BCF    03.7
 .................... {   
-....................    int8 ret2; 
-....................    output_low(LED); 
+....................     //* 
+....................     setup_adc_ports(an0);//Selecciona el puerto a realizar la conversion 
 *
 065E:  BSF    03.5
-065F:  BCF    06.2
-0660:  BCF    03.5
-0661:  BCF    06.2
+065F:  BCF    1F.0
+0660:  BSF    1F.1
+0661:  BSF    1F.2
+0662:  BSF    1F.3
+....................     setup_adc(adc_clock_internal);//Selecciona el reloj de conversion 
+0663:  BCF    1F.6
+0664:  BCF    03.5
+0665:  BSF    1F.6
+0666:  BSF    1F.7
+0667:  BSF    03.5
+0668:  BSF    1F.7
+0669:  BCF    03.5
+066A:  BSF    1F.0
+....................     set_adc_channel(0);//Selecciona el canal de conversion 
+066B:  MOVLW  00
+066C:  MOVWF  78
+066D:  MOVF   1F,W
+066E:  ANDLW  C7
+066F:  IORWF  78,W
+0670:  MOVWF  1F
+....................    int8 ret2; 
+....................    output_low(LED); 
+0671:  BSF    03.5
+0672:  BCF    06.2
+0673:  BCF    03.5
+0674:  BCF    06.2
 ....................       delay_ms(1000); 
-0662:  MOVLW  04
-0663:  MOVWF  3B
-0664:  MOVLW  FA
-0665:  MOVWF  3C
-0666:  CALL   102
-0667:  DECFSZ 3B,F
-0668:  GOTO   664
+0675:  MOVLW  04
+0676:  MOVWF  3B
+0677:  MOVLW  FA
+0678:  MOVWF  3C
+0679:  CALL   102
+067A:  DECFSZ 3B,F
+067B:  GOTO   677
 ....................       output_high(LED); 
-0669:  BSF    03.5
-066A:  BCF    06.2
-066B:  BCF    03.5
-066C:  BSF    06.2
+067C:  BSF    03.5
+067D:  BCF    06.2
+067E:  BCF    03.5
+067F:  BSF    06.2
 ....................       delay_ms(1000); 
-066D:  MOVLW  04
-066E:  MOVWF  3B
-066F:  MOVLW  FA
-0670:  MOVWF  3C
-0671:  CALL   102
-0672:  DECFSZ 3B,F
-0673:  GOTO   66F
+0680:  MOVLW  04
+0681:  MOVWF  3B
+0682:  MOVLW  FA
+0683:  MOVWF  3C
+0684:  CALL   102
+0685:  DECFSZ 3B,F
+0686:  GOTO   682
 ....................       output_low(LED); 
-0674:  BSF    03.5
-0675:  BCF    06.2
-0676:  BCF    03.5
-0677:  BCF    06.2
+0687:  BSF    03.5
+0688:  BCF    06.2
+0689:  BCF    03.5
+068A:  BCF    06.2
 ....................       delay_ms(1000); 
-0678:  MOVLW  04
-0679:  MOVWF  3B
-067A:  MOVLW  FA
-067B:  MOVWF  3C
-067C:  CALL   102
-067D:  DECFSZ 3B,F
-067E:  GOTO   67A
+068B:  MOVLW  04
+068C:  MOVWF  3B
+068D:  MOVLW  FA
+068E:  MOVWF  3C
+068F:  CALL   102
+0690:  DECFSZ 3B,F
+0691:  GOTO   68D
 ....................       output_high(LED); 
-067F:  BSF    03.5
-0680:  BCF    06.2
-0681:  BCF    03.5
-0682:  BSF    06.2
+0692:  BSF    03.5
+0693:  BCF    06.2
+0694:  BCF    03.5
+0695:  BSF    06.2
 ....................       delay_ms(1000); 
-0683:  MOVLW  04
-0684:  MOVWF  3B
-0685:  MOVLW  FA
-0686:  MOVWF  3C
-0687:  CALL   102
-0688:  DECFSZ 3B,F
-0689:  GOTO   685
+0696:  MOVLW  04
+0697:  MOVWF  3B
+0698:  MOVLW  FA
+0699:  MOVWF  3C
+069A:  CALL   102
+069B:  DECFSZ 3B,F
+069C:  GOTO   698
 ....................    RF_INT_EN();              // Habilitar interrupción RB0/INT. 
-068A:  GOTO   117
+069D:  GOTO   117
 ....................    RF_CONFIG_SPI();          // Configurar módulo SPI del PIC. 
-068B:  GOTO   125
+069E:  GOTO   125
 ....................    RF_CONFIG(0x40,0x01);     // Configurar módulo RF canal y dirección. 
-068C:  MOVLW  40
-068D:  MOVWF  3B
-068E:  MOVLW  01
-068F:  MOVWF  3C
-0690:  GOTO   143
+069F:  MOVLW  40
+06A0:  MOVWF  3B
+06A1:  MOVLW  01
+06A2:  MOVWF  3C
+06A3:  GOTO   143
 ....................    RF_ON();                  // Activar el módulo RF. 
-0691:  GOTO   336
-....................     
-....................    delay_ms(5); 
-0692:  MOVLW  05
-0693:  MOVWF  3C
-0694:  CALL   102
+06A4:  GOTO   336
 ....................    printf("configurado! \n"); 
-0695:  MOVLW  F4
-0696:  BSF    03.6
-0697:  MOVWF  0D
-0698:  MOVLW  00
-0699:  MOVWF  0F
-069A:  BCF    03.6
-069B:  CALL   369
+06A5:  MOVLW  F4
+06A6:  BSF    03.6
+06A7:  MOVWF  0D
+06A8:  MOVLW  00
+06A9:  MOVWF  0F
+06AA:  BCF    03.6
+06AB:  CALL   369
 ....................    set_tris_a(0b111111);     // Todo el puerto A como entradas. 
-069C:  MOVLW  3F
-069D:  BSF    03.5
-069E:  MOVWF  05
-....................    while(true) 
-....................    {   
-....................       RF_DATA[0]=0x61; 
-069F:  MOVLW  61
-06A0:  BCF    03.5
-06A1:  MOVWF  30
-....................       RF_DATA[3]=0x61; 
-06A2:  MOVWF  33
-....................       RF_DATA[1]=0x62; 
-06A3:  MOVLW  62
-06A4:  MOVWF  31
-....................       RF_DATA[2]=0x63; 
-06A5:  MOVLW  63
-06A6:  MOVWF  32
-....................       RF_DIR=0x08;           // Dirección del receptor. 
-06A7:  MOVLW  08
-06A8:  MOVWF  38
-....................       ret2=RF_SEND();        // Enviar datos. 
-06A9:  GOTO   3C1
-06AA:  MOVF   78,W
-06AB:  MOVWF  3A
-....................       delay_ms(1000); 
-06AC:  MOVLW  04
-06AD:  MOVWF  3B
-06AE:  MOVLW  FA
-06AF:  MOVWF  3C
-06B0:  CALL   102
-06B1:  DECFSZ 3B,F
-06B2:  GOTO   6AE
-....................       printf("Enviado! \n"); 
-06B3:  MOVLW  FC
-06B4:  BSF    03.6
-06B5:  MOVWF  0D
-06B6:  MOVLW  00
-06B7:  MOVWF  0F
-06B8:  BCF    03.6
-06B9:  CALL   369
-....................       printf("%d",ret2); 
-06BA:  MOVF   3A,W
-06BB:  MOVWF  3B
-06BC:  MOVLW  18
-06BD:  MOVWF  3C
-06BE:  GOTO   5DC
-06BF:  BSF    03.5
-06C0:  GOTO   69F
-....................       
-....................    } 
+06AC:  MOVLW  3F
+06AD:  BSF    03.5
+06AE:  MOVWF  05
+....................         while(true) 
+....................         {   
+....................            RF_DATA[0]=0x61; 
+06AF:  MOVLW  61
+06B0:  BCF    03.5
+06B1:  MOVWF  30
+....................            RF_DATA[3]=read_adc(); 
+06B2:  BSF    1F.2
+06B3:  BTFSC  1F.2
+06B4:  GOTO   6B3
+06B5:  BSF    03.5
+06B6:  MOVF   1E,W
+06B7:  BCF    03.5
+06B8:  MOVWF  33
+....................            RF_DATA[1]=0x62; 
+06B9:  MOVLW  62
+06BA:  MOVWF  31
+....................            RF_DATA[2]=0x63; 
+06BB:  MOVLW  63
+06BC:  MOVWF  32
+....................            RF_DIR=0x08;           // Dirección del receptor. 
+06BD:  MOVLW  08
+06BE:  MOVWF  38
+....................            ret2=RF_SEND();        // Enviar datos. 
+06BF:  GOTO   3C1
+06C0:  MOVF   78,W
+06C1:  MOVWF  3A
+....................            delay_ms(1000); 
+06C2:  MOVLW  04
+06C3:  MOVWF  3B
+06C4:  MOVLW  FA
+06C5:  MOVWF  3C
+06C6:  CALL   102
+06C7:  DECFSZ 3B,F
+06C8:  GOTO   6C4
+....................            printf("Enviado! \n"); 
+06C9:  MOVLW  FC
+06CA:  BSF    03.6
+06CB:  MOVWF  0D
+06CC:  MOVLW  00
+06CD:  MOVWF  0F
+06CE:  BCF    03.6
+06CF:  CALL   369
+....................            printf("%d",ret2); 
+06D0:  MOVF   3A,W
+06D1:  MOVWF  3B
+06D2:  MOVLW  18
+06D3:  MOVWF  3C
+06D4:  GOTO   5DC
+06D5:  BSF    03.5
+06D6:  GOTO   6AF
+....................  
+....................         } 
 .................... } 
-06C1:  SLEEP
+06D7:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F32   HS NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
