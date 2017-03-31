@@ -1,4 +1,3 @@
-E:\script sensores\RX.X\main.c:58:1:  Warning#216  Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_9600_62_63)
-      Memory usage:   ROM=16%      RAM=9% - 12%
-      0 Errors,  1 Warnings.
+      Memory usage:   ROM=13%      RAM=9% - 12%
+      0 Errors,  0 Warnings.
 Build Successful.

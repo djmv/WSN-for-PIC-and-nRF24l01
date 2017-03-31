@@ -1,60 +1,55 @@
 
-ROM used:   1339/8192 (16%)
-            1339/8192 (16%) including unused fragments
+ROM used:   1089/8192 (13%)
+            1089/8192 (13%) including unused fragments
 
-            1.0 Average locations per line
-            5.4 Average locations per statement
+            0.8 Average locations per line
+            4.5 Average locations per statement
 
-RAM used:   33/368 (9%) at main() level
-            46/368 (12%) worst case
+RAM used:   34/368 (9%) at main() level
+            43/368 (12%) worst case
 
-Stack used: 5 worst case (2 in main + 3 for interrupts)
+Stack used: 0 worst case (0 in main + 0 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   59    33  13  main.c
-  671     0   0  16F877A.h
-  601   215  87  lib_rf2gh4_10.h
+   50    25  10  main.c
+  759     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F886.h
+  602   215  90  lib_rf2gh4_10.h
 ----- -----
- 1331   248 Total
+ 1411   240 Total
 
-Page ROM  %  RAM   Vol Diff  Functions:
----- --- --- ---   --- ----  ----------
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
 0     21   2    1             @delay_ms1
-0     30   2    0   143  2.2  RF_CONFIG_SPI
-0     14   1    0    98  1.7  RF_INT_EN
-0    499  37    2  2193  2.0  RF_CONFIG
-0     51   4    0   149  1.3  RF_ON
-0    144  11    5   966  6.4  RF_RECEIVE
-0    178  13    1   620  5.2  int_RB0
-0      3   0    0             @const653
-0     88   7    4             @PSTRINGC7_9600_62_63
-0     21   2    3             @DIV88
-0     91   7    6             @PRINTF_D_9600_62_63
- Inline         2             @PRINTF_U_9600_62_63
-0      3   0    0             @const670
-0    109   8    1   341  2.7  MAIN
-0      8   1    0             @const675
+0     30   3    0    143  2.2  RF_CONFIG_SPI
+0     14   1    0     98  1.7  RF_INT_EN
+0    499  46    2   2193  2.0  RF_CONFIG
+0     51   5    0    149  1.3  RF_ON
+0    144  13    5    966  6.4  RF_RECEIVE
+0     35   3    1    282  4.8  IntRB0
+0    118  11    1    341  2.7  MAIN
+0      8   1    0             @const633
+0     90   8    4             @PSTRINGC7_9600_62_63
  Inline         0             @cinit1
 
 Program metrics:
     Functions               7
-    Statements              248
-    Comments                347
-    Volume (V)              6176
-    Difficulty (D)          21.5
-    Effort to implement (E) 132944
-    Time to implement (T)   2 hours, 3 minutes
+    Statements              240
+    Comments                360
+    Volume (V)              5669
+    Difficulty (D)          21.7
+    Effort to implement (E) 123257
+    Time to implement (T)   1 hours, 54 minutes
     Est Delivered Bugs (B)  1
     Cyclomatic Complexity   6
-    Maintainability (MI)    28
+    Maintainability (MI)    29
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
 00004-0004E    75  0  
-0004F-007FF  1260  709  
+0004F-007FF  1010  959  
 00800-00FFF     0  2048  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  

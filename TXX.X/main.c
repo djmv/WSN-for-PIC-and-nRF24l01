@@ -5,9 +5,9 @@
  * Created on 17 de marzo de 2017, 11:17 PM
  */
 
-#include <16F877A.h>
+#include <16F886.h>
 #FUSES NOWDT, XT, PUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP, NOCPD, NOWRT
-#device adc=10
+#device ADC=10
 #use delay(crystal=16MHz)
 #include "lib_rf2gh4_10.h"
 #byte porta=0x05
@@ -16,7 +16,7 @@
 #int_ext
 #define LED PIN_B2
 
-void int_RB0()
+void IntRB0()
 {
    int8 ret1;
    
@@ -33,11 +33,11 @@ void int_RB0()
 void main()
 {  
     //*
-    setup_adc_ports(an0);//Selecciona el puerto a realizar la conversion
-    setup_adc(adc_clock_internal);//Selecciona el reloj de conversion
-    set_adc_channel(0);//Selecciona el canal de conversion
-   int8 ret2;
-   output_low(LED);
+  //  setup_adc_ports(AN1);//Selecciona el puerto a realizar la conversion
+  //  setup_adc(adc_clock_internal);//Selecciona el reloj de conversion
+ //   set_adc_channel(0);//Selecciona el canal de conversion
+    int8 ret2;
+    output_low(LED);
       delay_ms(1000);
       output_high(LED);
       delay_ms(1000);
@@ -54,9 +54,9 @@ void main()
         while(true)
         {  
            RF_DATA[0]=0x61;
-           RF_DATA[3]=read_adc();
+      //     RF_DATA[3]=read_adc();
            RF_DATA[1]=0x62;
-           RF_DATA[2]=0x63;
+           RF_DATA[2]=0x50;
            RF_DIR=0x08;           // Dirección del receptor.
            ret2=RF_SEND();        // Enviar datos.
            delay_ms(1000);

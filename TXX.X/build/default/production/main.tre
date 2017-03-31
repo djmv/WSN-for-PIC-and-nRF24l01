@@ -1,5 +1,5 @@
 ÀÄTXX
-   ÃÄMAIN  0/159  Ram=1
+   ÃÄMAIN  0/148  Ram=2
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄ@delay_ms1  0/21  Ram=1
    ³  ÃÄ@delay_ms1  0/21  Ram=1
@@ -17,6 +17,6 @@
    ³  ÀÄ@PRINTF_D_9600_62_63  0/93  Ram=6
    ³     ÃÄ@DIV88  0/21  Ram=3
    ³     ÀÄ@DIV88  0/21  Ram=3
-   ÀÄint_RB0  0/21  Ram=1
+   ÀÄIntRB0  0/21  Ram=1
       ÃÄRF_RECEIVE  0/144  Ram=5
       ÀÄRF_RECEIVE  0/144  Ram=5
