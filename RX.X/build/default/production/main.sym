@@ -2,11 +2,11 @@
 004-005 @WRITE_PROGRAM_MEMORY8.P2
 005     porta
 00B     INTCON
-015     CCP_1_LOW
 015     CCP_1
+015     CCP_1_LOW
 016     CCP_1_HIGH
-01B     CCP_2_LOW
 01B     CCP_2
+01B     CCP_2_LOW
 01C     CCP_2_HIGH
 020     @INTERRUPT_AREA
 021     @INTERRUPT_AREA
@@ -27,21 +27,25 @@
 030-037 RF_DATA
 038     RF_DIR
 039     @TRIS_C
-03A-03B @sprintf_string
-03C     RF_CONFIG.canal
-03C     MAIN.@SCRATCH1
-03C     @PSTRINGC7_9600_62_63.@SCRATCH1
-03D     @delay_ms1.P1
-03D     RF_CONFIG.dir
-03D     @PSTRINGC7_9600_62_63.@SCRATCH2
-03E     @PSTRINGC7_9600_62_63.@SCRATCH3
-03F     @PSTRINGC7_9600_62_63.@SCRATCH4
-040     IntRB0.ret1
-041     RF_RECEIVE.i
-042     RF_RECEIVE.mas
-043     RF_RECEIVE.estado
-044     RF_RECEIVE.@SCRATCH1
-045     RF_RECEIVE.@SCRATCH2
+03A     RF_CONFIG.canal
+03A     MAIN.@SCRATCH1
+03A     @PSTRINGC7_9600_62_63.@SCRATCH1
+03B     @delay_ms1.P1
+03B     RF_CONFIG.dir
+03B     @PSTRINGC7_9600_62_63.@SCRATCH2
+03C     @PSTRINGC7_9600_62_63.@SCRATCH3
+03D     @PSTRINGC7_9600_62_63.@SCRATCH4
+03E     IntRB0.ret1
+03F     RF_RECEIVE.i
+03F     @PRINTF_U_9600_62_63.P1
+040     @PRINTF_U_9600_62_63.P1
+040     RF_RECEIVE.mas
+041     RF_RECEIVE.estado
+041     @DIV88.P1
+042     @DIV88.P1
+042     RF_RECEIVE.@SCRATCH1
+043     RF_RECEIVE.@SCRATCH2
+043     @DIV88.@SCRATCH1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -86,65 +90,32 @@ E7F     @INTERRUPT_AREA
 EFF     @INTERRUPT_AREA
 F7F     @INTERRUPT_AREA
 FFF     @INTERRUPT_AREA
-107F     @INTERRUPT_AREA
-10FF     @INTERRUPT_AREA
-117F     @INTERRUPT_AREA
-11FF     @INTERRUPT_AREA
-127F     @INTERRUPT_AREA
-12FF     @INTERRUPT_AREA
-137F     @INTERRUPT_AREA
-13FF     @INTERRUPT_AREA
-147F     @INTERRUPT_AREA
-14FF     @INTERRUPT_AREA
-157F     @INTERRUPT_AREA
-15FF     @INTERRUPT_AREA
-167F     @INTERRUPT_AREA
-16FF     @INTERRUPT_AREA
-177F     @INTERRUPT_AREA
-17FF     @INTERRUPT_AREA
-187F     @INTERRUPT_AREA
-18FF     @INTERRUPT_AREA
-197F     @INTERRUPT_AREA
-19FF     @INTERRUPT_AREA
-1A7F     @INTERRUPT_AREA
-1AFF     @INTERRUPT_AREA
-1B7F     @INTERRUPT_AREA
-1BFF     @INTERRUPT_AREA
-1C7F     @INTERRUPT_AREA
-1CFF     @INTERRUPT_AREA
-1D7F     @INTERRUPT_AREA
-1DFF     @INTERRUPT_AREA
-1E7F     @INTERRUPT_AREA
-1EFF     @INTERRUPT_AREA
-1F7F     @INTERRUPT_AREA
-1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
 00004F  RF_RECEIVE
-0000DF  IntRB0
-000102  @const633.call
-00010A  @delay_ms1
-00011F  RF_INT_EN
-00012D  RF_CONFIG_SPI
-00014B  RF_CONFIG
-00033E  RF_ON
-000371  @PSTRINGC7_9600_62_63
-0003CB  MAIN
-0003CB  @cinit1
-0003F1  @cinit2
+0000DF  @DIV88
+0000F4  IntRB0
+000116  @PRINTF_U_9600_62_63
+000159  @const656.call
+000161  @delay_ms1
+000176  RF_INT_EN
+000184  RF_CONFIG_SPI
+0001A2  RF_CONFIG
+000395  RF_ON
+0003C8  @PSTRINGC7_9600_62_63
+000422  @cinit1
+000422  MAIN
+000446  @cinit2
 
 Project Directory:
-    C:\Users\Julián Sibaja\Documents\MPLAB projects\WSN-for-PIC-and-nRF24l01-master\RX.X\
+    E:\script sensores\RX.X\
 
 Project Files:
-    main.c                                                  [30-Mar-17 18:25  CRC=6A3E3BC8]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F886.h [01-Mar-17 12:43  CRC=B80AA420]
-    lib_rf2gh4_10.h                                         [19-Mar-17 20:03  CRC=B735C83C]
+    main.c                                                  [02-abr-17 12:26  CRC=DE49849F]
+    16F886.h                                                [12-nov-13 14:35  CRC=E3D32390]
+    lib_rf2gh4_10.h                                         [02-abr-17 13:35  CRC=1518DDEA]
 
-Source signature=90B47060
-Program memory checksum=0000
-Program memory CRC=0000
-Hex file CRC=9223
+Source signature=EC4E6403
 
 Units:
     main (main)
@@ -156,12 +127,8 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
-    Compile Mode:       CCS5
     Predefined symbols:
        #define __16F886 1
-
-Compiler operating in Evaluation Mode
-To obtain a fully enabled compiler visit www.ccsinfo.com/products
 
 Output Files:
     XREF file:   build\default\production\main.xsym

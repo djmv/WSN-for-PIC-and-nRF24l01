@@ -1,10 +1,10 @@
 [PROJECT]
 Target=build\default\production\main.hex
 Processor_Text=PIC16F886
-CCSVersion=5.071d
+CCSVersion=5.015
 Compiler=PCM
 [Target Data]
-FileList=main.c
+FileList=build\default\production\main.c
 [Directories]
 Include=C:\Program Files (x86)\PICC\devices\;C:\Program Files (x86)\PICC\drivers\
 [build\default\production\main.c]

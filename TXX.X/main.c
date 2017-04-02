@@ -7,7 +7,7 @@
 
 #include <16F886.h>
 #FUSES NOWDT, XT, PUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOLVP, NOCPD, NOWRT
-#device ADC=10
+#device ADC=8
 #use delay(crystal=16MHz)
 #include "lib_rf2gh4_10.h"
 #byte porta=0x05
@@ -33,9 +33,9 @@ void IntRB0()
 void main()
 {  
     //*
-  //  setup_adc_ports(AN1);//Selecciona el puerto a realizar la conversion
-  //  setup_adc(adc_clock_internal);//Selecciona el reloj de conversion
- //   set_adc_channel(0);//Selecciona el canal de conversion
+    setup_adc_ports(san0);//Selecciona el puerto a realizar la conversion
+    setup_adc(adc_clock_internal);//Selecciona el reloj de conversion
+    set_adc_channel(0);//Selecciona el canal de conversion
     int8 ret2;
     output_low(LED);
       delay_ms(1000);
@@ -44,6 +44,8 @@ void main()
       output_low(LED);
       delay_ms(1000);
       output_high(LED);
+      delay_ms(1000);
+      output_low(LED);
       delay_ms(1000);
    RF_INT_EN();              // Habilitar interrupción RB0/INT.
    RF_CONFIG_SPI();          // Configurar módulo SPI del PIC.
@@ -54,12 +56,12 @@ void main()
         while(true)
         {  
            RF_DATA[0]=0x61;
-      //     RF_DATA[3]=read_adc();
+           RF_DATA[3]=read_adc();
            RF_DATA[1]=0x62;
            RF_DATA[2]=0x50;
            RF_DIR=0x08;           // Dirección del receptor.
            ret2=RF_SEND();        // Enviar datos.
-           delay_ms(1000);
+           delay_ms(500);
            printf("Enviado! \n");
            printf("%d",ret2);
 

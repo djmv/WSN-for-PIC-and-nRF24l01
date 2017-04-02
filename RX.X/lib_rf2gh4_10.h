@@ -230,7 +230,7 @@ void RF_CONFIG(int canal, int dir)
    //Ganancia máxima de LNA, 0dBm potencia de salida y 1Mbps de velocidad.
    output_low(RF_CS);
    spi_write(0x26);
-   spi_write(0x07);
+   spi_write(0x21);
    output_high(RF_CS);
 
    //STATUS

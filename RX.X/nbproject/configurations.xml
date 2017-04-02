@@ -5,7 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>lib_rf2gh4_10.h</itemPath>
-      <itemPath>16F877A.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LibraryFiles"
                    displayName="Library Files"
@@ -43,7 +42,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>CCSC</languageToolchain>
-        <languageToolchainVersion>5.071</languageToolchainVersion>
+        <languageToolchainVersion>5.015</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>

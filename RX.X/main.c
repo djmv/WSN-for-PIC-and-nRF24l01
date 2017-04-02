@@ -17,6 +17,7 @@ void IntRB0()
       {    
          porta=RF_DATA[0];                   // El puerto A contendrá el valor que le llegue del emisor, a través de RF_DATA[0].
          printf("\n %c",RF_DATA[2]);
+         printf("\n %u",RF_DATA[3]);
          ret1 = RF_RECEIVE();                // "ret1" nos dirá si hay recepción simple, múltiple o no hay datos para leer.
       }while ( (ret1 == 0) || (ret1 == 1) ); // Mientras haya datos para leer, seguir leyendo.
    }  
@@ -30,6 +31,8 @@ void main() {
     output_low(LED);
     delay_ms(1000);
     output_high(LED);
+    delay_ms(1000); 
+    output_low(LED);
     delay_ms(1000);   
     set_tris_a(0b000000);     // Todo el puerto A como salida.
     porta=0;                  // Inicialmente lo ponemos a cero.
